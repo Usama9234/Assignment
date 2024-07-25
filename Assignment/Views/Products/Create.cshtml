@@ -1,0 +1,72 @@
+﻿@model Assignment.Models.Product
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="mb-4 text-light">Create Product</h1>
+
+<hr class="text-light" />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post" enctype="multipart/form-data" class="bg-dark p-4 rounded">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label text-light"></label>
+                <input asp-for="Name" class="form-control bg-secondary text-light border-0" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label text-light"></label>
+                <input asp-for="Price" class="form-control bg-secondary text-light border-0" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label text-light">Upload Photo</label>
+                <input type="file" name="ImageFile" class="form-control bg-secondary text-light border-0" />
+            </div>
+
+            <div class="mb-3">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+<!-- Custom Styles -->
+<style>
+    body {
+        background-color: #343a40; /* Dark background */
+        color: #f8f9fa; /* Light text color */
+    }
+
+    .form-control, .form-select, .btn {
+        background-color: #495057; /* Slightly lighter dark background for form elements */
+        color: #f8f9fa;
+    }
+
+    .table-dark {
+        background-color: #212529; /* Darker table background */
+    }
+
+        .table-dark td, .table-dark th {
+            border-color: #454d55; /* Darker border color */
+        }
+
+    .table-secondary {
+        background-color: #6c757d; /* Slightly lighter background for table headers */
+    }
+</style>

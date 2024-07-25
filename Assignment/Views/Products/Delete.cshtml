@@ -1,0 +1,71 @@
+﻿@model Assignment.Models.Product
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="mb-4 text-light">Delete Product</h1>
+
+<h3 class="text-light">Are you sure you want to delete this?</h3>
+
+<div class="bg-dark p-4 rounded text-light">
+    <h4>Product</h4>
+    <hr class="text-light" />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.ImagePath))
+            {
+                <img src="@Model.ImagePath" alt="Product Image" class="img-thumbnail" style="width: 200px; height: 200px;" />
+            }
+            else
+            {
+                <span>No Image Available</span>
+            }
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary ms-2">Back to List</a>
+    </form>
+</div>
+<!-- Custom Styles -->
+<style>
+    body {
+        background-color: #343a40; /* Dark background */
+        color: #f8f9fa; /* Light text color */
+    }
+
+    .form-control, .form-select, .btn {
+        background-color: #495057; /* Slightly lighter dark background for form elements */
+        color: #f8f9fa;
+    }
+
+    .table-dark {
+        background-color: #212529; /* Darker table background */
+    }
+
+        .table-dark td, .table-dark th {
+            border-color: #454d55; /* Darker border color */
+        }
+
+    .table-secondary {
+        background-color: #6c757d; /* Slightly lighter background for table headers */
+    }
+</style>

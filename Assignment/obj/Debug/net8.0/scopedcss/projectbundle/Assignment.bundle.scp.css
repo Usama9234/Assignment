@@ -1,0 +1,47 @@
+/* _content/Assignment/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* General Styles */
+body[b-y18fyt0aqx] {
+    background-color: #121212; /* Dark background */
+    color: #e0e0e0; /* Light text color */
+}
+
+.navbar-dark .navbar-nav .nav-link[b-y18fyt0aqx] {
+    color: #e0e0e0; /* Light text for nav links */
+}
+
+    .navbar-dark .navbar-nav .nav-link:hover[b-y18fyt0aqx] {
+        color: #ffffff; /* Highlight color on hover */
+    }
+
+.footer[b-y18fyt0aqx] {
+    background-color: #1c1c1c; /* Dark footer background */
+    color: #e0e0e0; /* Light text color */
+}
+
+    .footer a[b-y18fyt0aqx] {
+        color: #e0e0e0; /* Light color for footer links */
+    }
+
+        .footer a:hover[b-y18fyt0aqx] {
+            color: #ffffff; /* Highlight color on hover */
+        }
+
+.btn-primary[b-y18fyt0aqx] {
+    background-color: #007bff; /* Primary button background */
+    border-color: #007bff; /* Primary button border */
+}
+
+    .btn-primary:hover[b-y18fyt0aqx] {
+        background-color: #0056b3; /* Primary button hover background */
+        border-color: #004085; /* Primary button hover border */
+    }
+
+/* Custom styles for tables */
+.table[b-y18fyt0aqx] {
+    background-color: #1f1f1f; /* Dark table background */
+    color: #e0e0e0; /* Light text color in table */
+}
+
+    .table th[b-y18fyt0aqx], .table td[b-y18fyt0aqx] {
+        border-color: #343a40; /* Darker borders for table */
+    }

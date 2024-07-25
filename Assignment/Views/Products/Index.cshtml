@@ -1,0 +1,101 @@
+﻿@model IEnumerable<Assignment.Models.Product>
+
+@{
+    ViewData["Title"] = "Index";
+    var currentPage = ViewBag.CurrentPage ?? 1;
+    var totalPages = ViewBag.TotalPages ?? 1;
+    var pageSize = ViewBag.PageSize ?? 5;
+    var pageSizes = new[] { 5, 10, 15, 20 }; // Options for page size
+    var searchQuery = ViewBag.SearchQuery ?? string.Empty;
+}
+
+<h1 class="mb-4 text-light">Products</h1>
+
+<!-- Create Button -->
+<div class="mb-4">
+    <a asp-action="Create" class="btn btn-success">Create New Product</a>
+</div>
+
+<!-- Search Form -->
+<form method="get" asp-action="Index" class="mb-4">
+    <div class="row">
+        <div class="col-md-4">
+            <input type="text" name="searchQuery" value="@searchQuery" class="form-control" placeholder="Search by name" />
+        </div>
+        <div class="col-md-2">
+            <input type="submit" value="Search" class="btn btn-primary w-100" />
+        </div>
+    </div>
+</form>
+
+<!-- Products Table -->
+<table class="table table-dark table-bordered">
+    <thead class="table-secondary">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                    {
+                        <img src="@item.ImagePath" alt="Product Image" class="img-thumbnail" style="width: 50px; height: 50px;" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td class="text-center">
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm text-white">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Pagination Controls -->
+<div class="d-flex justify-content-between align-items-center mt-4">
+    <div>
+        @if (currentPage > 1)
+        {
+            <a class="btn btn-secondary btn-sm" href="@Url.Action("Index", new { pageNumber = currentPage - 1, pageSize = pageSize, searchQuery = searchQuery })">Previous</a>
+        }
+        <span class="btn btn-secondary btn-sm disabled">Page @currentPage of @totalPages</span>
+        @if (currentPage < totalPages)
+        {
+            <a class="btn btn-secondary btn-sm" href="@Url.Action("Index", new { pageNumber = currentPage + 1, pageSize = pageSize, searchQuery = searchQuery })">Next</a>
+        }
+    </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    body {
+        background-color: #343a40; /* Dark background */
+        color: #f8f9fa; /* Light text color */
+    }
+    .form-control, .form-select, .btn {
+        background-color: #495057; /* Slightly lighter dark background for form elements */
+        color: #f8f9fa;
+    }
+    .table-dark {
+        background-color: #212529; /* Darker table background */
+    }
+    .table-dark td, .table-dark th {
+        border-color: #454d55; /* Darker border color */
+    }
+    .table-secondary {
+        background-color: #6c757d; /* Slightly lighter background for table headers */
+    }
+</style>
